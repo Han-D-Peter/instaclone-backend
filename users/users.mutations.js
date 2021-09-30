@@ -58,6 +58,10 @@ export default {
         };
       }
       const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+      return {
+        ok: true,
+        token,
+      };
     },
   },
 };
