@@ -1,11 +1,13 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import client from "../../client";
 
 export default {
   Mutation: {
     editProfile: async (
       _,
-      { firstName, lastName, userName, email, password: newPassword }
+      { firstName, lastName, userName, email, password: newPassword },
+      { loggedInUser }
     ) => {
       let uglyPassword = null;
       if (newPassword) {
@@ -13,7 +15,7 @@ export default {
       }
       const updatedUser = await client.user.update({
         where: {
-          id: 1,
+          id: loggedInUser.id,
         },
         data: {
           firstName,
@@ -23,7 +25,7 @@ export default {
           ...(uglyPassword && { password: uglyPassword }),
         },
       });
-      console.log(updatedUser);
+
       if (updatedUser.id) {
         return {
           ok: true,
