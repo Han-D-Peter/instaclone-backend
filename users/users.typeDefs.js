@@ -11,6 +11,10 @@ export default gql`
     avatar: String
     following: [User]
     followers: [User]
+    totalFollowing: Int!
+    totalFollowers: Int!
+    isFollowing: Boolean!
+    isMe: Boolean!
     createdAt: String!
     updatedAt: String!
   }
