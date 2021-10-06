@@ -4,9 +4,11 @@
   "description": "",
   "scripts": {
     "preinstall": "npx npm-force-resolutions@0.0.3",
-    "dev": "nodemon --exec babel-node server --delay 2",
+    "dev": "nodemon --exec babel-node src/server --delay 2",
     "migrate": "npx prisma migrate dev --preview-feature",
-    "studio": "npx prisma studio"
+    "studio": "npx prisma studio",
+    "build": "babel src --out-dir build",
+    "start": "node build/server"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,7 @@
   },
   "homepage": "https://github.com/Han-D-Peter/instaclone-backend#readme",
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/cli": "^7.15.7",
     "@graphql-tools/load-files": "^6.4.0",
     "@graphql-tools/merge": "^8.1.2",
     "@graphql-tools/schema": "^8.2.0",
@@ -40,6 +42,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/preset-env": "^7.15.6",
     "nodemon": "^2.0.13",
     "prettier-plugin-prisma": "^3.1.1",
