@@ -14,6 +14,13 @@ export default {
         },
       }),
     likes: ({ id }) => client.like.count({ where: { photoId: id } }),
+    comments: ({ id }) => client.comment.count({ where: { photoId: id } }),
+    isMine: async ({ userId }, _, { loggedInUser }) => {
+      if (!loggedInUser) {
+        return false;
+      }
+      return userId === loggedInUser.id;
+    },
   },
   Hashtag: {
     photos: async ({ id }, { page }) => {
