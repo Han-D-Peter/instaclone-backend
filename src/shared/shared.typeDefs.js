@@ -5,4 +5,5 @@ export default gql`
     ok: Boolean!
     error: String
   }
+  scalar Upload
 `;
