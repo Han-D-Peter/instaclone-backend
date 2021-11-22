@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Han-D-Peter/instaclone-backend#readme",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.42.0",
     "@babel/cli": "^7.15.7",
     "@babel/runtime": "^7.15.4",
     "@graphql-tools/load-files": "^6.4.0",

@@ -7,6 +7,28 @@ AWS.config.update({
   },
 });
 
+export const deleteFromS3 = async file => {
+  const removedFoldernameFile = `${file}`.replace(
+    `${process.env.S3_ADDRESS}`,
+    ""
+  );
+  const targetBucketParams = {
+    Bucket: "instaclong-uploadspeter",
+    Key: removedFoldernameFile,
+  };
+  try {
+    const data = await new AWS.S3().deleteObject(
+      targetBucketParams,
+      function (err, data) {
+        if (err) console.log(err, err.stack);
+        else console.log(data);
+      }
+    );
+  } catch (e) {
+    console.log("Can't delete pic");
+  }
+};
+
 export const uploadToS3 = async (file, userId, folderName) => {
   const {
     file: { filename, createReadStream },
