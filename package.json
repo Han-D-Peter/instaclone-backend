@@ -27,7 +27,7 @@
     "@babel/runtime": "^7.15.4",
     "@graphql-tools/load-files": "^6.4.0",
     "@graphql-tools/merge": "^8.1.2",
-    "@graphql-tools/schema": "^8.2.0",
+    "@graphql-tools/schema": "^8.3.1",
     "@prisma/client": "^3.1.1",
     "apollo-server": "^2.25.2",
     "apollo-server-core": "^3.3.0",
@@ -43,7 +43,8 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "require": "^2.4.20",
-    "strip-ansi": "^7.0.1"
+    "strip-ansi": "^7.0.1",
+    "subscriptions-transport-ws": "^0.9.19"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

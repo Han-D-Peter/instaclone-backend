@@ -1,3 +1,5 @@
+import { NEW_MESSAGE } from "../../../constants";
+import pubsub from "../../../pubsub";
 import client from "../../client";
 import { protectedResolver } from "../../users/users.utils";
 
@@ -66,6 +68,7 @@ export default {
             },
           },
         });
+        pubsub.publish(NEW_MESSAGE, { roomUpdates: { ...newMessage } });
         return {
           ok: true,
         };
