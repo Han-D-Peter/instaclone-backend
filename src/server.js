@@ -51,11 +51,19 @@ async function startServer() {
       schema,
       execute,
       subscribe,
+      onConnect: async ({ token }, webSocket, context) => {
+        if (!token) {
+          throw new Error("You can't listen.");
+        }
+        const loggedInUser = await getUser(token);
+        console.log("Connected!");
+        return loggedInUser;
+      },
+      onDisconnect(webSocket, context) {
+        console.log("Disconnected!");
+      },
     },
-    {
-      server: httpServer,
-      path: apollo.graphqlPath,
-    }
+    { server: httpServer }
   );
 
   const PORT = process.env.PORT;
